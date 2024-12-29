@@ -1,0 +1,6 @@
+﻿services:
+  eshopapi:
+    image: eshopapi
+    build:
+      context: .
+      dockerfile: Dockerfile
