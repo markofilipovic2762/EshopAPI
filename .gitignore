@@ -1,0 +1,6 @@
+/.dockerignore
+/.idea/.idea.EShopAPI/.idea/.gitignore
+/bin/Debug/net9.0/appsettings.Development.json
+/appsettings.Development.json
+/bin/Debug/net9.0/appsettings.json
+/appsettings.json
