@@ -20,7 +20,7 @@ public static class CategoryEndpoints
             await categories.UpdateCategoryAsync(category);
             return Results.Ok(category);
         });
-        group.MapDelete("/", async (int id, ICategoryRepository categories) =>
+        group.MapDelete("/{id:int}", async (int id, ICategoryRepository categories) =>
         {
             await categories.DeleteCategoryAsync(id);
             return Results.Ok();

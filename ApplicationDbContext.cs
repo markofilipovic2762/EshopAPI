@@ -1,12 +1,21 @@
 using EShopAPI.Common;
+using EShopAPI.Identity;
 using EShopAPI.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EShopAPI;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext<AppUser>
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options,
+        IHttpContextAccessor httpContextAccessor)
+        : base(options)
+    {
+        _httpContextAccessor = httpContextAccessor;
+    }
     
     public DbSet<Category> Categories { get; set; }
     public DbSet<Subcategory> Subcategories { get; set; }
@@ -43,18 +52,20 @@ public class ApplicationDbContext : DbContext
             if (entry.State == EntityState.Added)
             {
                 entity.Created = DateTimeOffset.UtcNow;
-                entity.CreatedBy = GetCurrentUser(); // Dodajte vašu logiku za dobijanje korisnika
+                entity.CreatedBy = GetCurrentUser();
             }
 
             entity.LastModified = DateTimeOffset.UtcNow;
-            entity.LastModifiedBy = GetCurrentUser(); // Dodajte vašu logiku za dobijanje korisnika
+            entity.LastModifiedBy = GetCurrentUser(); 
         }
     }
 
     private string GetCurrentUser()
     {
-        // Primer: dohvatite trenutnog korisnika iz konteksta
-        // Ako koristite ASP.NET Core Identity ili JWT, zamenite ovom logikom
-        return "System"; // Ovde unesite korisnika koji obavlja akciju
+        if(_httpContextAccessor.HttpContext?.User?.Identity?.IsAuthenticated == true)
+        {
+            return _httpContextAccessor.HttpContext.User.Identity.Name ?? "Unknown";
+        }
+        return "System";
     }
 }

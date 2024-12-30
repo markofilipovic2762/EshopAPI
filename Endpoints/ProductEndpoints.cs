@@ -22,7 +22,7 @@ public static class ProductEndpoints
         group.MapPut("/",
             async ([FromBody] Product product, IProductRepository products) =>
             await products.UpdateProductAsync(product));
-        group.MapDelete("/", async (int id, IProductRepository products) => await products.DeleteProductAsync(id));
+        group.MapDelete("/{id:int}", async (int id, IProductRepository products) => await products.DeleteProductAsync(id));
         return group;
     }
 }

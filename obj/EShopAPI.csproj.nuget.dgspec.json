@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\markopc\\Desktop\\EShopAPI\\EShopAPI.csproj": {}
+    "D:\\marko\\EShopAPI\\EshopAPI\\EShopAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\markopc\\Desktop\\EShopAPI\\EShopAPI.csproj": {
+    "D:\\marko\\EShopAPI\\EshopAPI\\EShopAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\markopc\\Desktop\\EShopAPI\\EShopAPI.csproj",
+        "projectUniqueName": "D:\\marko\\EShopAPI\\EshopAPI\\EShopAPI.csproj",
         "projectName": "EShopAPI",
-        "projectPath": "C:\\Users\\markopc\\Desktop\\EShopAPI\\EShopAPI.csproj",
-        "packagesPath": "C:\\Users\\markopc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\markopc\\Desktop\\EShopAPI\\obj\\",
+        "projectPath": "D:\\marko\\EShopAPI\\EshopAPI\\EShopAPI.csproj",
+        "packagesPath": "C:\\Users\\fil5672\\.nuget\\packages\\",
+        "outputPath": "D:\\marko\\EShopAPI\\EshopAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\markopc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\fil5672\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -50,6 +50,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.0, )"

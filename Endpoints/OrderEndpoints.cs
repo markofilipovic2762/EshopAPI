@@ -13,7 +13,7 @@ public static class OrderEndpoints
         group.MapGet("/{id:int}", async (int id, IOrderRepository orders) => await orders.GetOrderAsync(id));
         group.MapPost("/", async ([FromBody] Order order, IOrderRepository orders) => await orders.CreateOrderAsync(order));
         group.MapPut("/", async ([FromBody] Order order, IOrderRepository orders) => await orders.UpdateOrderAsync(order));
-        group.MapDelete("/", async (int id, IOrderRepository orders) => await orders.DeleteOrderAsync(id));
+        group.MapDelete("/{id:int}", async (int id, IOrderRepository orders) => await orders.DeleteOrderAsync(id));
         return group;
         
     }

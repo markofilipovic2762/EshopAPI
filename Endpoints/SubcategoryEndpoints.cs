@@ -12,7 +12,7 @@ public static class SubcategoryEndpoints
         group.MapGet("/{id:int}", async (int id, ISubcategoryRepository subcategories) => await subcategories.GetSubcategoryByIdAsync(id));
         group.MapPost("/", async ([FromBody] Subcategory subcategory, ISubcategoryRepository subcategories) => await subcategories.AddSubcategoryAsync(subcategory));
         group.MapPut("/", async ([FromBody] Subcategory subcategory, ISubcategoryRepository subcategories) => await subcategories.UpdateSubcategoryAsync(subcategory));
-        group.MapDelete("/", async (int id, ISubcategoryRepository subcategories) => await subcategories.DeleteSubcategoryAsync(id));
+        group.MapDelete("/{id:int}", async (int id, ISubcategoryRepository subcategories) => await subcategories.DeleteSubcategoryAsync(id));
         return group;
     }   
 }

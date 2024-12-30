@@ -12,7 +12,7 @@ public static class CustomerEndpoints
         group.MapGet("/{id:int}", async (int id, ICustomerRepository customers) => await customers.GetCustomerByIdAsync(id));
         group.MapPost("/", async ([FromBody] Customer customer, ICustomerRepository customers) => await customers.AddCustomerAsync(customer));
         group.MapPut("/", async ([FromBody] Customer customer, ICustomerRepository customers) => await customers.UpdateCustomerAsync(customer));
-        group.MapDelete("/", async (int id, ICustomerRepository customers) => await customers.DeleteCustomerAsync(id));
+        group.MapDelete("/{id:int}", async (int id, ICustomerRepository customers) => await customers.DeleteCustomerAsync(id));
         return group;
     }
 }

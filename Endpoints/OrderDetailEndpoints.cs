@@ -12,7 +12,7 @@ public static class OrderDetailEndpoints
         group.MapGet("/{id:int}", async (int id, IOrderDetailRepository orderDetails) => await orderDetails.GetOrderDetailByIdAsync(id));
         group.MapPost("/", async ([FromBody] OrderDetail orderDetail, IOrderDetailRepository orderDetails) => await orderDetails.AddOrderDetailAsync(orderDetail));
         group.MapPut("/", async ([FromBody] OrderDetail orderDetail, IOrderDetailRepository orderDetails) => await orderDetails.UpdateOrderDetailAsync(orderDetail));
-        group.MapDelete("/", async (int id, IOrderDetailRepository orderDetails) => await orderDetails.DeleteOrderDetailAsync(id));
+        group.MapDelete("/{id:int}", async (int id, IOrderDetailRepository orderDetails) => await orderDetails.DeleteOrderDetailAsync(id));
         return group;
     }
 }

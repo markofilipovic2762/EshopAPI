@@ -9,10 +9,10 @@ public static class SupplierEndpoints
     public static RouteGroupBuilder MapSupplierEndpoints(this RouteGroupBuilder group)
     {
         group.MapGet("/", async (ISupplierRepository suppliers) => await suppliers.GetAllSuppliersAsync());
-        group.MapGet("/{id}", async (int id, ISupplierRepository suppliers) => await suppliers.GetSupplierByIdAsync(id));
+        group.MapGet("/{id:int}", async (int id, ISupplierRepository suppliers) => await suppliers.GetSupplierByIdAsync(id));
         group.MapPost("/", async ([FromBody] Supplier supplier, ISupplierRepository suppliers) => await suppliers.AddSupplierAsync(supplier));
-        group.MapPut("/{id}", async ([FromBody] Supplier supplier, ISupplierRepository suppliers) => await suppliers.UpdateSupplierAsync(supplier));
-        group.MapDelete("/{id}", async (int id, ISupplierRepository suppliers) => await suppliers.DeleteSupplierAsync(id));
+        group.MapPut("/", async ([FromBody] Supplier supplier, ISupplierRepository suppliers) => await suppliers.UpdateSupplierAsync(supplier));
+        group.MapDelete("/{id:int}", async (int id, ISupplierRepository suppliers) => await suppliers.DeleteSupplierAsync(id));
         return group;
     }
 }

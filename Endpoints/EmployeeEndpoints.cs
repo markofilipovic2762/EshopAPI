@@ -12,7 +12,7 @@ public static class EmployeeEndpoints
         group.MapGet("/{id:int}", async (int id, IEmployeeRepository employees) => await employees.GetEmployeeByIdAsync(id));
         group.MapPost("/", async ([FromBody] Employee employee, IEmployeeRepository employees) => await employees.AddEmployeeAsync(employee));
         group.MapPut("/", async ([FromBody] Employee employee, IEmployeeRepository employees) => await employees.UpdateEmployeeAsync(employee));
-        group.MapDelete("/", async (int id, IEmployeeRepository employees) => await employees.DeleteEmployeeAsync(id));
+        group.MapDelete("{id:int}", async (int id, IEmployeeRepository employees) => await employees.DeleteEmployeeAsync(id));
         return group;
     }
 }
