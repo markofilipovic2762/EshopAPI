@@ -14,4 +14,6 @@ public class Shipper: BaseAuditableEntity
     public string Name { get; set; } = null!;
     [MaxLength(30)]
     public string Phone { get; set; } = null!;
+    [MaxLength(50)]
+    public string? Email { get; set; }
 }

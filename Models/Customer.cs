@@ -14,5 +14,7 @@ public class Customer:BaseAuditableEntity
     public int? PostalCode { get; set; }
     [MaxLength(20)]
     public string? Phone { get; set; }
+    [MaxLength(50)]
+    public string? Email { get; set; }
 
 }

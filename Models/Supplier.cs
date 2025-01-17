@@ -13,7 +13,9 @@ public class Supplier : BaseAuditableEntity
     [MaxLength(50)]
     public string Name { get; set; } = null!;
     [MaxLength(50)]
-    public string Contact { get; set; } = null!;
+    public string? Phone { get; set; }
+    [MaxLength(50)]
+    public string? Email { get; set; }
     [MaxLength(50)]
     public string? Address { get; set; }
     [MaxLength(50)]

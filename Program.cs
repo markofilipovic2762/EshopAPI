@@ -12,6 +12,13 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 // Dodavanje EF Core i baze podataka
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options
@@ -65,7 +72,7 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 var app = builder.Build();
-
+app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseSerilogRequestLogging();
@@ -78,7 +85,7 @@ if (app.Environment.IsDevelopment())
     {
         options
             .WithTitle("Eshop API")
-            .WithTheme(ScalarTheme.Saturn)
+            .WithTheme(ScalarTheme.BluePlanet)
             .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
     } );
 }

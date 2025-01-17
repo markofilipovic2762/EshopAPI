@@ -1,3 +1,4 @@
+using EShopAPI.Dtos;
 using EShopAPI.Interfaces;
 using EShopAPI.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +11,12 @@ public static class CategoryEndpoints
     {
         group.MapGet("/",async (ICategoryRepository categories) => await categories.GetAllCategoriesAsync());
         group.MapGet("/{id:int}", async (int id, ICategoryRepository categories) => await categories.GetCategoryByIdAsync(id));
-        group.MapPost("/", async ([FromBody] Category category, ICategoryRepository categories) =>
+        group.MapPost("/", async ([FromBody] CategoryPostDto categoryPostDto, ICategoryRepository categories) =>
         {
+            var category = new Category()
+            {
+                Name = categoryPostDto.Name
+            };
             await categories.AddCategoryAsync(category);
             return Results.Created("/categories/" + category.Id, category);
         }).Accepts<Category>("application/json");

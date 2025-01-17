@@ -23,10 +23,19 @@ public class SubcategoryRepository(ApplicationDbContext db) : ISubcategoryReposi
         await db.Subcategories.Where(x => x.Id == id).ExecuteDeleteAsync(cancellationToken);
     }
 
-    public async Task<List<Subcategory?>> GetAllSubcategoriesAsync(CancellationToken cancellationToken = default)
+    public async Task<List<Subcategory?>> GetAllSubcategoriesAsync(int? id, CancellationToken cancellationToken = default)
     {
+        if (id != null)
+        {
+            return await db.Subcategories.Where(x => x.CategoryId == id).ToListAsync<Subcategory?>(cancellationToken);
+        }
         return await db.Subcategories.ToListAsync<Subcategory?>(cancellationToken);
     }
+
+    /*public async Task<List<Subcategory?>> GetSubcategoriesByCategory(int id, CancellationToken cancellationToken)
+    {
+        return await db.Subcategories.Where(x => x.CategoryId == id).ToListAsync<Subcategory?>(cancellationToken);
+    }*/
 
     public async Task<Subcategory?> GetSubcategoryByIdAsync(int id, CancellationToken cancellationToken = default)
     {

@@ -10,6 +10,8 @@ public class Employee: BaseAuditableEntity
     public string Name { get; set; } = null!;
     [MaxLength(50)]
     public string Title { get; set; } = null!;
+    [MaxLength(50)]
+    public string? Email { get; set; }
     public DateOnly? BirthDate { get; set; }
     public DateOnly? HireDate { get; set; }
     [MaxLength(50)]

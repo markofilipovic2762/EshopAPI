@@ -28,9 +28,24 @@ public class ProductRepository(ApplicationDbContext db) : IProductRepository
         return await db.Products.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 
-    public async Task<List<Product?>> GetAllProductsAsync(CancellationToken cancellationToken = default)
+    public async Task<List<object>> GetAllProductsAsync(CancellationToken cancellationToken = default)
     {
-        return await db.Products.ToListAsync<Product?>(cancellationToken);
+        return await db.Products.Select(x=> new
+        {
+            x.Name,
+            x.Description,
+            x.Price,
+            x.Amount,
+            x.Sold,
+            x.IsDeleted,
+            x.ImageUrl,
+            x.CategoryId,
+            x.SubcategoryId,
+            x.SupplierId,
+            CategoryName = x.Category.Name,
+            SubcategoryName = x.Subcategory.Name,
+            SupplierName = x.Supplier!.Name
+        }).ToListAsync<object>(cancellationToken);
     }
 
     public async Task<List<Product?>> GetAllProductsByCategoryAsync(int categoryId, CancellationToken cancellationToken = default)
