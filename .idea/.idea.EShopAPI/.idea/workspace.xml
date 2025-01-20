@@ -10,10 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c60750c3-665a-4151-8a99-378d46c94ed6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/EShopAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EShopAPI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Endpoints/CategoryEndpoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Endpoints/CategoryEndpoints.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EShopAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EShopAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Product.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net9.0/EShopAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net9.0/EShopAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net9.0/EShopAPI.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net9.0/EShopAPI.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net9.0/EShopAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net9.0/EShopAPI.pdb" afterDir="false" />
@@ -21,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/obj/Debug/net9.0/EShopAPI.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net9.0/EShopAPI.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net9.0/EShopAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net9.0/EShopAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net9.0/EShopAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net9.0/EShopAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net9.0/EShopAPI.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net9.0/EShopAPI.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net9.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net9.0/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net9.0/ref/EShopAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net9.0/ref/EShopAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net9.0/refint/EShopAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net9.0/refint/EShopAPI.dll" afterDir="false" />
@@ -145,6 +144,7 @@
       <workItem from="1736839729460" duration="3439000" />
       <workItem from="1736855491261" duration="2384000" />
       <workItem from="1736925396040" duration="4878000" />
+      <workItem from="1737361076811" duration="10090000" />
     </task>
     <task id="LOCAL-00001" summary="izmene pred kraj godine">
       <option name="closed" value="true" />

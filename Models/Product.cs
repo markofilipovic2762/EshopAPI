@@ -23,8 +23,6 @@ public class Product:BaseAuditableEntity
     public int? SupplierId {  get; set; }
     [MaxLength(100)]
     public string? ImageUrl { get; set; }
-    public string? ImageBase64 => Image != null ? Convert.ToBase64String(Image) : null;
-    public byte[]? Image { get; set; }
     public virtual Category Category { get; set; } = null!;
     public virtual Subcategory Subcategory { get; set; } = null!;
     public virtual Supplier? Supplier { get; set; }
