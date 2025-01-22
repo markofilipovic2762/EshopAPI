@@ -1,7 +1,7 @@
 using EShopAPI.Interfaces;
 using EShopAPI.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace EShopAPI.Endpoints;
 
@@ -30,27 +30,44 @@ public static class ProductEndpoints
             {
                 return Results.BadRequest("Invalid file.");
             }
-            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+
+            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", };
             var fileExtension = Path.GetExtension(file.FileName).ToLower();
+            Log.Information("FileExtension is {FileExtension}, filename is {FileName}", fileExtension, file.FileName);
 
             if (!allowedExtensions.Contains(fileExtension))
             {
                 return Results.BadRequest("File type not supported.");
             }
 
+            var allowedMimeTypes = new[] { "image/jpeg", "image/png" };
+            Log.Information("Tip fajla je {TipFajla}", file.ContentType);
+            if (!allowedMimeTypes.Contains(file.ContentType))
+            {
+                return Results.BadRequest("Invalid file type.");
+            }
+
             // Čuvanje fajla u lokalni fajl sistem ili cloud
+            /*var uploadDirectory = Path.Combine("D:\\marko\\EShopAPI\\EshopAPI\\Uploads");*/
+            var uploadDirectory = Path.Combine(Environment.CurrentDirectory, "Uploads");
             var fileName = Guid.NewGuid() + fileExtension;
-            var filePath = Path.Combine("Uploads", fileName);
+            var filePath = Path.Combine(uploadDirectory, fileName);
+            
+            // Proverite i kreirajte direktorijum ako ne postoji
+            if (!Directory.Exists(uploadDirectory))
+            {
+                Directory.CreateDirectory(uploadDirectory);
+            }
 
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
             }
-            
-            var fileUrl = $"http://localhost:5131/uploads/{fileName}";
+
+            var fileUrl = $"/uploads/{fileName}";
 
             return Results.Ok(new { Url = fileUrl });
-        });
+        }).DisableAntiforgery();
         return group;
     }
 }

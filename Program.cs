@@ -6,6 +6,7 @@ using EShopAPI.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 using Serilog;
@@ -63,6 +64,7 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 
 builder.Services.AddOpenApi();
+//builder.Services.AddAntiforgery();
 builder.Logging.ClearProviders(); // Uklanja postojeće log providere
 builder.Logging.AddSerilog(); // Dodaje Serilog kao logger
 builder.Host.UseSerilog(); // Postavlja Serilog kao default logger
@@ -72,9 +74,17 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 var app = builder.Build();
+
+var uploadDirectory = Path.Combine(Environment.CurrentDirectory, "Uploads");
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(uploadDirectory),
+    RequestPath = "/uploads"
+});
 app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
+//app.UseAntiforgery();
 app.UseSerilogRequestLogging();
 
 // Configure the HTTP request pipeline.
