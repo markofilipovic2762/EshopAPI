@@ -32,6 +32,7 @@ public class ProductRepository(ApplicationDbContext db) : IProductRepository
     {
         return await db.Products.Select(x=> new
         {
+            x.Id,
             x.Name,
             x.Description,
             x.Price,
